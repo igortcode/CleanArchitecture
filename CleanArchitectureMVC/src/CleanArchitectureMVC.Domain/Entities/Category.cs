@@ -3,9 +3,8 @@ using System.Collections.Generic;
 
 namespace CleanArchitectureMVC.Domain.Entities
 {
-    public sealed class Category
+    public sealed class Category : Entity
     {
-        public int Id { get; private set; }
         public string Name { get; private set; }
         public ICollection<Product> Products { get; private set; }
 
@@ -25,7 +24,7 @@ namespace CleanArchitectureMVC.Domain.Entities
         }
         private void ValidadeDomain(string name, int? id = null)
         {
-            DomainExceptionValidation.When(string.IsNullOrEmpty(name) || name.Length < 3, "Invalid name.Name is required");
+            DomainExceptionValidation.When(string.IsNullOrEmpty(name), "Invalid name.Name is required");
             DomainExceptionValidation.When(name.Length < 3, "Invalid name, too short, minimun 3 characters");
             
             Name = name;
