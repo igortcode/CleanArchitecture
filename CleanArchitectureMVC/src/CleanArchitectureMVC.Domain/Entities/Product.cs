@@ -31,15 +31,15 @@ namespace CleanArchitectureMVC.Domain.Entities
 
         private void ValidateDomain(string name, string description, decimal price, int stock, string image = null, int? id = null)
         {
-            DomainExceptionValidation.When(string.IsNullOrEmpty(name), "Invalid name.Name is required");
+            DomainExceptionValidation.When(string.IsNullOrEmpty(name), "Invalid name. Name is required");
             DomainExceptionValidation.When(name.Length < 3, "Invalid name, too short, minimun 3 characters");
 
             DomainExceptionValidation.When(string.IsNullOrEmpty(description), "Invalid description. Description is required");
-            DomainExceptionValidation.When(name.Length < 5, "Invalid description, too short, minimun 5 characters");
+            DomainExceptionValidation.When(description.Length < 5, "Invalid description, too short, minimun 5 characters");
 
             DomainExceptionValidation.When(price < 0, "Invalid Price value.");
 
-            DomainExceptionValidation.When(stock < 0, "Invalid Price value.");
+            DomainExceptionValidation.When(stock < 0, "Invalid Stock value.");
 
             if(image != null)
                 DomainExceptionValidation.When(image.Length > 250, "Invalid Image name, too long, maximum 250 characters");
