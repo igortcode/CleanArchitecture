@@ -5,6 +5,6 @@ namespace CleanArchitectureMVC.Domain.Interfaces
 {
     public interface IProductRepository : IAbstractRepository<Product>
     {
-        Task<Product> GetProductCategoryAsync(int id);
+        Task<Product> GetProductCategoryAsync(int? id);
     }
 }
