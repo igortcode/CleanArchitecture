@@ -1,4 +1,7 @@
-﻿using CleanArchitectureMVC.Domain.Interfaces;
+﻿using CleanArchitectureMVC.Application.Interfaces;
+using CleanArchitectureMVC.Application.Mappings;
+using CleanArchitectureMVC.Application.Services;
+using CleanArchitectureMVC.Domain.Interfaces;
 using CleanArchitectureMVC.Infra.Data.Context;
 using CleanArchitectureMVC.Infra.Data.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -14,10 +17,18 @@ namespace CleanArchitectureMVC.Infra.IoC
             services.AddDbContext<ApplicationDbContext>(options =>
                         options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"), b =>
                         b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
-            
+
+            #region Services
+            services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<IProductService, ProductService>();
+            #endregion
+
+            #region Repository
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
+            #endregion
 
+            services.AddAutoMapper(typeof(DomainToDTOMappingProfile));
             return services;
         }
     }
