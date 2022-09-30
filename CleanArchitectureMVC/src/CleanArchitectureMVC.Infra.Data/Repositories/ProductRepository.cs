@@ -35,7 +35,7 @@ namespace CleanArchitectureMVC.Infra.Data.Repositories
             return await _dbSet.ToListAsync();
         }
 
-        public async Task<Product> GetAsync(int id)
+        public async Task<Product> GetAsync(int? id)
         {
             return await _dbSet.FindAsync(id);
         }
