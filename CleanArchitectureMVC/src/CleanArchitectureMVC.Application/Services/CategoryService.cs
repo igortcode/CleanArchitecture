@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace CleanArchitectureMVC.Application.Services
 {
-    internal class CategoryService : ICategoryService
+    public class CategoryService : ICategoryService
     {
         private readonly IMapper _mapper;
         private readonly ICategoryRepository _categoryRepository;
