@@ -7,7 +7,7 @@ namespace CleanArchitectureMVC.Domain.Interfaces
     {
         Task<IEnumerable<T>> GetAllAsync();
         Task<T> GetAsync(int? id);
-        Task DeleteAsync(T entity);
+        Task<T> DeleteAsync(T entity);
         Task<T> Create(T entity);
         Task<T> Update(T entity);
     }

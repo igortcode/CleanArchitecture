@@ -13,8 +13,4 @@
     <ProjectReference Include="..\CleanArchitectureMVC.Domain\CleanArchitectureMVC.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="CQRS\Products\Handlers\" />
-  </ItemGroup>
-
 </Project>

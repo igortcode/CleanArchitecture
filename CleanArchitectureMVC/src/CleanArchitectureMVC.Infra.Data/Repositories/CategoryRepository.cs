@@ -23,10 +23,11 @@ namespace CleanArchitectureMVC.Infra.Data.Repositories
             return entity;
         }
 
-        public async Task DeleteAsync(Category entity)
+        public async Task<Category> DeleteAsync(Category entity)
         {
             _context.Categories.Remove(entity);
             await _context.SaveChangesAsync();
+            return entity;
         }
 
         public async Task<IEnumerable<Category>> GetAllAsync()

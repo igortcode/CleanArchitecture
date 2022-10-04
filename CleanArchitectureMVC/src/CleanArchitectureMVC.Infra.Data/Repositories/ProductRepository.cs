@@ -24,10 +24,11 @@ namespace CleanArchitectureMVC.Infra.Data.Repositories
             return entity;
         }
 
-        public async Task DeleteAsync(Product entity)
+        public async Task<Product> DeleteAsync(Product entity)
         {
             _dbSet.Remove(entity);
             await SaveChangesAsync();
+            return entity;
         }
 
         public async Task<IEnumerable<Product>> GetAllAsync()
