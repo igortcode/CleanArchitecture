@@ -38,13 +38,7 @@ namespace CleanArchitectureMVC.Infra.Data.Repositories
 
         public async Task<Product> GetAsync(int? id)
         {
-            return await _dbSet.FindAsync(id);
-        }
-
-        public async Task<Product> GetProductCategoryAsync(int? id)
-        {
-            //eager loading
-            return await _context.Products.Include(c => c.Category).SingleOrDefaultAsync(p => p.Id == id);
+            return await _dbSet.Include(a => a.Category).FirstAsync(a => a.Id == id.Value);
         }
 
         public async Task<Product> Update(Product entity)
